@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615501dbe4f3fe94fbf4b564abb10237, type: 3}
+  m_Name: ModConfig
+  m_EditorClassIdentifier: 
+  id: ForgetMeNoModule
+  title: Forget Me No.
+  author: YourokahnTMF
+  description: 'Solve the module by adding digits from mathematical constants depending
+    on the stage number. Manual can be found on ktane.timwi.de or in the manuals folder.
+
+
+    YourokahnTMF on discord if there are bugs.'
+  version: 1.0.0
+  outputFolder: build
+  previewImage: {fileID: 2800000, guid: eac562e934b9ce747b4292a6c9eea1d6, type: 3}

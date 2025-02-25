@@ -1,0 +1,10 @@
+{
+  "name": "ForgetMeNoModule-Editor",
+  "references": [
+    "ForgetMeNoModule"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": []
+}

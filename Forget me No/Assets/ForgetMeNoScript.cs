@@ -222,7 +222,7 @@ public class ForgetMeNoScript : MonoBehaviour
     private void DisplayStageInfo(int Stage)
     {
         // Normal Stage Display
-        if (Stage == 0)
+        if (Stage == 0 && TotalStages != 0)
         {
             BigText.text = DisplayNumberSequence[CurrentStageNumber - 1].ToString();
             StageDisplay.text = CurrentStageNumber.ToString().PadLeft(2, '0');
