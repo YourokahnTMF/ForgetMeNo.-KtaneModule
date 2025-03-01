@@ -118,15 +118,19 @@ public class ForgetMeNoScript : MonoBehaviour
                 DisplayNumberSequence += Rnd.Range(0, 10).ToString();
                 DisplayLEDSequence += Rnd.Range(0, 10).ToString();
             }
-            Debug.Log("NumSequence: " + DisplayNumberSequence);
-            Debug.Log("LEDSequence: " + DisplayLEDSequence);
+
+            Logging($"The sequence of numbers on the display is: {DisplayNumberSequence}");
+            Logging($"The sequence of LEDs lit is: {DisplayLEDSequence}");
 
             DisplayStageInfo(0);
             AssignConstantsToButtons();
             GetConstantDigitString();
             StageCalculations();
 
-            Logging($"The assigned constants, from 0 to 9, are: {AssignedConstants[0][0]} , { AssignedConstants[1][0] } , { AssignedConstants[2][0] } , { AssignedConstants[3][0] } , { AssignedConstants[4][0] } , { AssignedConstants[5][0] } , { AssignedConstants[6][0] } , { AssignedConstants[7][0] } , { AssignedConstants[8][0]} , { AssignedConstants[9][0]}");
+            Logging($"The assigned constants, from 1 to 0, are: {AssignedConstants[0][0]} , { AssignedConstants[1][0] } , { AssignedConstants[2][0] } , { AssignedConstants[3][0] } , { AssignedConstants[4][0] } , { AssignedConstants[5][0] } , { AssignedConstants[6][0] } , { AssignedConstants[7][0] } , { AssignedConstants[8][0]} , {AssignedConstants[9][0]}");
+            string LoggingFinalAnswerString = FinalAnswerDisplay;
+            LoggingFinalAnswerString.Replace("\n", " ");
+            Logging($"The final answer in groups of 3 is: {LoggingFinalAnswerString}");
         };
     }
     // Update is called once per frame
@@ -152,10 +156,9 @@ public class ForgetMeNoScript : MonoBehaviour
     //Button Press
     void ButtonPress(int pos)
     {
-        Debug.Log(pos);
         Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, Buttons[pos].transform);
 
-        Buttons[pos].AddInteractionPunch();
+        Buttons[pos].AddInteractionPunch(0.3f);
 
         if (ButtonAnimCoroutines[pos] != null)
             StopCoroutine(ButtonAnimCoroutines[pos]);
@@ -312,58 +315,72 @@ public class ForgetMeNoScript : MonoBehaviour
 
         if (Bomb.GetPortCount(Port.Parallel) != 0 && Bomb.GetOnIndicators().Contains("BOB"))
         {
+            Logging("Condition “If there is a parallel port and a lit BOB indicator.” applies");
             Assign(A, B, C, D);
         }
         else if (Bomb.GetBatteryCount() > 5)
         {
+            Logging("Condition “If there are more than 5 batteries.” applies");
             Assign(D, C, B, A);
         }
         else if (Bomb.GetIndicators().Count() > 3)
         {
+            Logging("Condition “If there are more than 3 indicators.” applies");
             Assign(A, D, C, B);
         }
         else if (Bomb.GetPortCount() == 0)
         {
+            Logging("Condition “If there are no ports.” applies");
             Assign(B, D, C, A);
         }
         else if (Bomb.GetBatteryCount() == 0)
         {
+            Logging("Condition “If there are no batteries.” applies");
             Assign(C, B, D, A);
         }
         else if (Bomb.GetSerialNumberNumbers().Count() == 4)
         {
+            Logging("Condition “If there are 4 digits in the serial number.” applies");
             Assign(B, A, D, C);
         }
         else if (Bomb.GetModuleIDs().Count() < 47 && Bomb.GetModuleIDs().Count() > 11)
         {
+            Logging("Condition “If the number of modules is greater than 11 but less than 47.” applies");
             Assign(D, A, B, C);
         }
         else if (CheckVowelInSN())
         {
+            Logging("Condition “If the serial number has a vowel.” applies");
             Assign(C, A, D, B);
         }
         else if (Bomb.GetPortPlates().Count(plt => plt.Count() == 0) > 0)
         {
+            Logging("Condition “If there is an empty port plate.” applies");
             Assign(B, C, A, D);
         }
         else if (Bomb.GetPorts().Distinct().Count() == 6)
         {
+            Logging("Condition “If every port type is present on the bomb.” applies");
             Assign(D, B, C, A);
         }
         else if (Bomb.GetOnIndicators().Count() > Bomb.GetOffIndicators().Count())
         {
+            Logging("Condition “If there are more lit than unlit indicators.” applies");
             Assign(A, D, B, C);
         }
         else if (int.Parse(Bomb.GetSerialNumber()[5].ToString()) % 2 == 0)
         {
+            Logging("Condition “If the sixth character of the serial number is even.” applies");
             Assign(C, B, A, D);
         }
         else if (int.Parse(Bomb.GetSerialNumber()[2].ToString()) % 2 == 1)
         {
+            Logging("Condition “If the third character of the serial number is odd.” applies");
             Assign(D, C, A, B);
         }
         else
         {
+            Logging("Condition “If none of the above apply.” applies");
             Assign(B, A, C, D);
         }
     }
@@ -457,3 +474,4 @@ public class ForgetMeNoScript : MonoBehaviour
         RegularText.text = "";
     }
 }
+

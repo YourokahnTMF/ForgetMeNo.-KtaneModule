@@ -3362,7 +3362,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1060464402277062}
-  m_Text: 999/999
+  m_Text: 727/727
   m_OffsetZ: 0.01
   m_CharacterSize: 6
   m_LineSpacing: 1
@@ -3509,9 +3509,9 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1890660276768870}
-  m_Text: '123 456 789 000
+  m_Text: '727 727/727 727
 
-    123 456 789 ---'
+    727 727/727 727'
   m_OffsetZ: 0.01
   m_CharacterSize: 3
   m_LineSpacing: 1
