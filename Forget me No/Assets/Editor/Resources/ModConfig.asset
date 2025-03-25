@@ -14,8 +14,9 @@ MonoBehaviour:
   id: ForgetMeNoModule
   title: Forget Me No.
   author: YourokahnTMF
-  description: 'Solve the module by adding digits from mathematical constants depending
-    on the stage number. Manual can be found on ktane.timwi.de or in the manuals folder.
+  description: 'Add digits from various mathematical constants to displayed digits
+    to get the answer to solve the module. Manual can be found on ktane.timwi.de or
+    in the manuals folder.
 
 
     YourokahnTMF on discord if there are bugs.'
